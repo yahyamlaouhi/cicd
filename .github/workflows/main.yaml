@@ -28,3 +28,10 @@ jobs:
 
       - name: Run Tests
         run: python manage.py test
+      
+      - name: Build Docker Image
+        uses: actions/build-push-actions@v2
+        with:
+          context: .
+          dockerfile: Dockerfile
+          push: false
