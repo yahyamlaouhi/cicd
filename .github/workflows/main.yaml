@@ -35,12 +35,12 @@ jobs:
           context: .
           dockerfile: Dockerfile
           push: false
-          tag : ${{ secrets.DOCKER_USERNAME}}/CICD:latest
+          tag : ${{ secrets.DOCKER_HUB_USERNAME}}/CICD:latest
 
       - name : Login to Docker Hub
         uses : docker/login-action@v2
         with :
-          username : ${{ secrets.DOCKER_USERNAME}}
+          username : ${{ secrets.DOCKER_HUB_USERNAME}}
           password : ${{ secrets.DOCKER_HUB_ACCESS_TOKEN}}
 
       - name : Push to Docker Hub
@@ -49,6 +49,6 @@ jobs:
           context : .
           dockerfile : Dockerfile 
           push : true
-          tag : ${{ secrets.DOCKER_USERNAME}}/CICD:latest
+          tag : ${{ secrets.DOCKER_HUB_USERNAME}}/CICD:latest
 
 
