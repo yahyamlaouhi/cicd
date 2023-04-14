@@ -1,8 +1,7 @@
 FROM python:3.9-alpine
-LABEL maintainer="farkito"
+LABEL maintainer="cicd"
 
 ENV PYTHONUNBUFFERED 1
-ENV PATH="/scripts:${PATH}"
 
 RUN pip install --upgrade pip
 
@@ -15,10 +14,8 @@ RUN apk del .tmp-build-deps
 
 RUN  mkdir /app
 WORKDIR /app
-COPY ./app /app
+COPY . /app
 
-COPY ./scripts /scripts
-RUN chmod +x /scripts/*
 
 RUN mkdir -p /vol/web/media
 RUN mkdir -p /vol/web/static
